@@ -1,48 +1,46 @@
-puts "Введите длину первой стороны треугольника"
-a = gets.chomp.to_i
+puts 'Введите длину первой стороны треугольника'
+a = gets.chomp.to_f
 
-puts "Введите длину второй стороны треугольника"
-b = gets.chomp.to_i
+puts 'Введите длину второй стороны треугольника'
+b = gets.chomp.to_f
 
-puts "Введите длину третьей стороны треугольника"
-c = gets.chomp.to_i
+puts 'Введите длину третьей стороны треугольника'
+c = gets.chomp.to_f
 
 
 # равносторонний
 if a == b && b == c
-	puts "Треугольник равносторонний и не прямоугольный"
-	abort
-	
+	abort 'Треугольник равносторонний, равнобедренный и не прямоугольный'
 end
 
 # равнобедренный
 if a == b || b == c || c == a
-	puts "Треугольник равнобедренный"
+	puts 'Треугольник равнобедренный'
 end
 
-# поиск гипотенузы и проверка на прямоугольность
-max = a
-tr = false
-
-if max < b
-	max = b
-	if max**2 == a**2 + c**2
-		tr = true
-	end
-end
-if max < c
-	max = c
-	if max**2 == a**2 + b**2
-		tr = true
-	end
+# поиск гипотенузы
+if a > b and a > c
+  gipotenuza = a
+  katet_1 = b
+  katet_2 = c
+elsif b > a and b > c
+  gipotenuza = b
+  katet_1 = a
+  katet_2 = c
+else
+  gipotenuza = c
+  katet_1 = a
+  katet_2 = b
 end
 
-if tr
-	puts "Треугольник прямоугольный"
-	puts "Гипотенуза треугольника равна #{max}"
-elsif
-	puts "Треугольник не прямоугольный"
+puts "Гипотенуза равна #{gipotenuza}"
+
+if katet_1**2 + katet_2**2 == gipotenuza**2
+  puts 'Треугольник прямоугольный'
+else
+  puts 'Треугольник не прямоугольный'
 end
+
 
 
 
