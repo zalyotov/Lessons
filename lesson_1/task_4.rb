@@ -19,6 +19,6 @@ if d > 0
 elsif d == 0
   x = -b / ( 2 * a )
   puts "x_1 = x_2 = #{x}"
-elsif d < 0
+else
   puts "Корней нет"
 end
