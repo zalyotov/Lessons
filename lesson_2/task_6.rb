@@ -6,7 +6,7 @@ loop do
   puts 'Введите название товара'
   name = gets.chomp
 
-  break if name == 'stop' || name = 'стоп'
+  break if name == 'stop' || name == 'стоп'
 
   puts 'Введите цену за единицу товара'
   price = gets.chomp.to_f
@@ -16,10 +16,8 @@ loop do
 
   basket[name] = {quantity: quantity, price: price}
 
+  full_price += quantity * price
+
 end
 
-basket.each do |product|
-  full_price += product[:quantity] * product[:price]
-end
-
-puts 'Итоговая сумма всех покупок в корзине равна #{full_price}'
+puts "Итоговая сумма всех покупок в корзине равна #{full_price}"
