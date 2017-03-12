@@ -1,15 +1,7 @@
-
-letters = ('a'..'z').to_a
+letters = ('a'..'z')
 res = {}
-vowels = ["a", "e", "o", "u", "y"]
-i = 1
+vowels = %w( a e i o u )
 
-letters.each do |letter|
-
-  if vowels.include? letter
-    res[letter] = i
-  end
-
-  i +=1
-
+letters.each.with_index(1) do |letter, index|
+  res[letter] = index if vowels.include? letter
 end
