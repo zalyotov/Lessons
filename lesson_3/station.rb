@@ -7,7 +7,7 @@ class Station
   end
 
   def arrive(train)
-    @trains << train
+    puts "Поезд #{train.number} прибыл на станцию #{@name}" if @trains << train
   end
 
   def departure(train)
@@ -21,6 +21,6 @@ class Station
 
   def train_filter_list(type)
     puts "Список поездов типа \"#{type}\", находящиеся на станции #{@name}:"
-    @trains.find_all { |train| train.type == type }
+    @trains.select { |train| train.type == type }
   end
 end

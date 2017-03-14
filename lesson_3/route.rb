@@ -1,19 +1,19 @@
 class Route
-  attr_writer :route
+  attr_accessor :stations
 
   def initialize(from, to)
-    @route = [from, to]
+    @stations = [from, to]
   end
 
   def add_station(station_name)
-    @route.insert(-2, station_name)
+    @stations.insert(-2, station_name)
   end
 
   def delete_station(station_name)
-    @route.delete(station_name)
+    @stations.delete(station_name)
   end
 
   def show
-    puts "Маршрут: #{@route.join(' => ')}"
+    puts "Маршрут: #{@stations.join(' => ')}"
   end
 end
