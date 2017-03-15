@@ -32,6 +32,7 @@ class Train
   end
 
   def cur_station
+    puts "floor: #{self.step.floor} | ceil: #{self.step.ceil}"
     if self.step.floor != self.step.ceil
       puts "Поезд №#{number} находится в пути между станциями \"#{@route.stations[self.step.floor].name}\" и \"#{@route.stations[self.step.ceil].name}\""
     else

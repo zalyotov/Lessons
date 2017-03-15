@@ -7,7 +7,7 @@ station2 = Station.new("Липецк")
 station3 = Station.new("Тамбов")
 station4 = Station.new("Волгоград")
 
-station1.train_filter_list
+#station1.train_filter_list
 
 train1 = Train.new(1, "cargo", 12)
 train2 = Train.new(2, "cargo", 7)
@@ -21,12 +21,12 @@ train1.add_route(route1)
 train2.add_route(route2)
 train3.add_route(route3)
 
-puts "Маршрут поезда №1:"
-puts route1.show
-puts "Маршрут поезда №2:"
-puts route2.show
-puts "Маршрут поезда №3:"
-puts route3.show
+puts "\nМаршрут поезда №1:"
+route1.show
+puts "\nМаршрут поезда №2:"
+route2.show
+puts "\nМаршрут поезда №3:"
+route3.show
 puts "\n";
 
 station1.arrive(train1)
@@ -39,6 +39,9 @@ puts "\n"
 
 puts "Скорость поезда №3 - #{train3.speed}"
 station1.departure(train3)
+puts "Скорость поезда №3 - #{train3.speed}"
+puts "Прибавляем скорость поезду №3 на 10"
+train3.speed += 10
 puts "Скорость поезда №3 - #{train3.speed}\n\n"
 
 puts "Маршрут №1:"
@@ -49,6 +52,7 @@ route1.show
 puts "\n"
 
 train1.cur_station
+train2.cur_station
 train3.cur_station
 
 
