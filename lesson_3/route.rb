@@ -5,15 +5,17 @@ class Route
     self.stations = [from, to]
   end
 
-  def add_station(station_name)
-    self.stations.insert(-2, station_name)
+  def add_station(station)
+    self.stations.insert(-2, station)
   end
 
-  def delete_station(station_name)
-    self.stations.delete(station_name)
+  def delete_station(station)
+    self.stations.delete(station)
   end
 
   def show
-    puts "Маршрут: #{@stations.join(' => ')}"
+    self.stations.each { |station|
+      puts station.name
+    }
   end
 end

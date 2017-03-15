@@ -7,18 +7,24 @@ class Station
   end
 
   def arrive(train)
-    puts "Поезд #{train.number} (#{train.type}) прибыл на станцию #{self.name}" if self.trains << train
+    puts "Поезд №#{train.number} (#{train.type}) прибыл на станцию #{self.name}" if self.trains << train
     train.stop
+    train.step += 0.5
   end
 
   def departure(train)
-    puts "Поезд #{train.number} (#{train.type}) убыл со станции #{@name}" if self.trains.delete(train)
+    puts "Поезд №#{train.number} (#{train.type}) убыл со станции #{@name}" if self.trains.delete(train)
     train.go(50)
+    train.step += 0.5
   end
 
   def train_list
-    puts "Список всех поездов на станции #{@name}: "
-    self.trains.each { |train| puts "Поезд №#{train.number}" }
+    if self.trains.count > 0
+      puts "Список всех поездов на станции #{@name}: "
+      self.trains.each { |train| puts "Поезд №#{train.number}" }
+    else
+      puts "На станции #{@name} поездов нет"
+    end
   end
 
   def train_filter_list
@@ -30,6 +36,6 @@ class Station
         result[:passanger] += 1
       end
     end
-    puts "\r\nСписок поездов, находящиеся на станции #{@name} по типу: passanger - #{result[:passanger]}, cargo - #{result[:cargo]}\r\n\r\n"
+    puts "Список поездов, находящиеся на станции #{@name} по типу: пассажирских - #{result[:passanger]}, грузовых - #{result[:cargo]}"
   end
 end

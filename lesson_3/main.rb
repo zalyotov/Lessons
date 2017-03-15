@@ -2,42 +2,75 @@ require "./route.rb"
 require "./train.rb"
 require "./station.rb"
 
-first_station = Station.new("first_station")
-second_station = Station.new("second_station")
-last_station = Station.new("last_station")
+station1 = Station.new("Москва")
+station2 = Station.new("Липецк")
+station3 = Station.new("Тамбов")
+station4 = Station.new("Волгоград")
 
-first_station.train_filter_list
+station1.train_filter_list
 
 train1 = Train.new(1, "cargo", 12)
 train2 = Train.new(2, "cargo", 7)
 train3 = Train.new(3, "passanger", 12)
 
-route1 = Route.new(first_station, last_station)
-route2 = Route.new(first_station, last_station)
-route3 = Route.new(first_station, last_station)
+route1 = Route.new(station1, station4)
+route2 = Route.new(station1, station2)
+route3 = Route.new(station1, station3)
 
 train1.add_route(route1)
 train2.add_route(route2)
 train3.add_route(route3)
 
-first_station.arrive(train1)
-first_station.arrive(train2)
-first_station.arrive(train3)
+puts "Маршрут поезда №1:"
+puts route1.show
+puts "Маршрут поезда №2:"
+puts route2.show
+puts "Маршрут поезда №3:"
+puts route3.show
+puts "\n";
 
-first_station.train_filter_list
+station1.arrive(train1)
+station1.arrive(train2)
+station1.arrive(train3)
+
+puts "\n"
+station1.train_filter_list
+puts "\n"
 
 puts "Скорость поезда №3 - #{train3.speed}"
-first_station.departure(train3)
-puts "Скорость поезда №3 - #{train3.speed}"
+station1.departure(train3)
+puts "Скорость поезда №3 - #{train3.speed}\n\n"
+
+puts "Маршрут №1:"
+route1.show
+puts "\nВ маршрут №1 добавлена станция #{station2.name}" if route1.add_station(station2)
+puts "Маршрут №1:"
+route1.show
+puts "\n"
 
 train1.cur_station
-
-first_station.train_list
-
-first_station.train_filter_list
+train3.cur_station
 
 
-train1.add_wagon
+
+puts "\n"
+puts "У поезда №#{train3.number} #{train3.wagons} вагонов"
+train3.add_wagon
+train3.remove_wagon
+station4.arrive(train3)
+train3.add_wagon
+puts "У поезда №#{train3.number} #{train3.wagons} вагонов"
+puts "\n"
+
+station1.train_list
+station2.train_list
+station3.train_list
+station4.train_list
+
+puts "\n"
+station1.train_filter_list
+station4.train_filter_list
+
 train1.add_route(route1)
 train1.forward
 
