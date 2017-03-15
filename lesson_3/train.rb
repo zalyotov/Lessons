@@ -1,5 +1,5 @@
 class Train
-  attr_accessor :number, :type, :wagons, :speed
+  attr_accessor :number, :type, :wagons, :speed, :step
 
   def initialize(number, type, wagons)
     @number = number
@@ -9,11 +9,19 @@ class Train
   end
 
   def add_wagon
-    @wagons += 1 if @speed == 0
+    if self.speed == 0
+      self.wagons += 1
+    else
+      puts "Нельзя добавить вагон, т.к. поезд находится в движении"
+    end
   end
 
   def remove_wagon
-    @wagons -= 1 if @speed == 0
+    if self.speed == 0
+      self.wagons -= 1
+    else
+      puts "Нельзя удалить вагон, т.к. поезд находится в движении"
+    end
   end
 
   def add_route(route)
@@ -22,22 +30,31 @@ class Train
   end
 
   def cur_station
-    puts "Поезд №#{number} находится на станции: \"#{@route.stations[@step]}\""
+    puts "Поезд №#{number} находится на станции: \"#{@route.stations[@step].name}\""
   end
 
   def next_station
-    puts "Предыдущая станция: \"#{route.stations[@step + 1]}\""
+    puts "Предыдущая станция: \"#{route.stations[self.step + 1]}\""
   end
 
   def prev_station
-    puts "Предыдущая станция: \"#{route.stations[@step - 1]}\""
+    puts "Предыдущая станция: \"#{route.stations[self.step - 1]}\""
   end
 
   def forward
-    @step += 1
+    self.step += 1
   end
 
   def back
-    @step -= 1
+    self.step -= 1
   end
+
+  def stop
+    self.speed = 0
+  end
+
+  def go(speed)
+    self.speed = speed
+  end
+
 end
