@@ -9,13 +9,13 @@ class Station
   def arrive(train)
     puts "Поезд №#{train.number} (#{train.type}) прибыл на станцию #{self.name}" if self.trains << train
     train.stop
-    train.step += 0.5
+    train.step += 0.3
   end
 
   def departure(train)
     puts "Поезд №#{train.number} (#{train.type}) убыл со станции #{@name}" if self.trains.delete(train)
     train.go(50)
-    train.step += 0.5
+    train.step += 0.7
   end
 
   def train_list
