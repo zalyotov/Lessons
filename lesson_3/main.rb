@@ -39,6 +39,7 @@ puts "\n"
 
 puts "Скорость поезда №3 - #{train3.speed}"
 station1.departure(train3)
+train3.forward
 puts "Скорость поезда №3 - #{train3.speed}"
 puts "Прибавляем скорость поезду №3 на 10"
 train3.speed += 10
@@ -62,6 +63,7 @@ puts "У поезда №#{train3.number} #{train3.wagons} вагонов"
 train3.add_wagon
 train3.remove_wagon
 station4.arrive(train3)
+train3.stop
 train3.add_wagon
 puts "У поезда №#{train3.number} #{train3.wagons} вагонов"
 puts "\n"

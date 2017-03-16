@@ -6,16 +6,16 @@ class Route
   end
 
   def add_station(station)
-    self.stations.insert(-2, station)
+    stations.insert(-2, station)
   end
 
   def delete_station(station)
-    self.stations.delete(station)
+    stations.delete(station)
   end
 
   def show
-    self.stations.each { |station|
+    stations.each do |station|
       puts station.name
-    }
+    end
   end
 end
