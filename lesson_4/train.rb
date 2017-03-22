@@ -43,12 +43,10 @@ class Train
 
   def count_wagons
     self.wagons.count
-  end
-
-  protected  
+  end 
 
   def add_wagon(wagon)
-    self.wagons << wagon if self.speed == 0      
+    self.wagons << wagon if valid_wagon?(wagon)    
   end
 
   def remove_wagon(wagon)

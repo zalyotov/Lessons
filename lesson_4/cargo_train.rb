@@ -1,15 +1,7 @@
+require_relative 'train'
+
 class CargoTrain < Train
-  def add_wagon(wagon)
-    super if wagon.type == wagon_type
-  end
-
-  def remove_wagon(wagon)
-    super if wagon.type == wagon_type
-  end
-  
-  private
-
-  def wagon_type
-    "cargo"
+  def valid_wagon?(wagon)
+    wagon.class == CargoWagon
   end
 end

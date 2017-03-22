@@ -31,4 +31,21 @@ class Station
     end
     puts "Список поездов, находящиеся на станции #{@name} по типу: пассажирских - #{result[:passanger]}, грузовых - #{result[:cargo]}"
   end
+
+  def train_list
+    result = {cargo: 0, passanger: 0}
+    self.trains.each do |train| 
+      if train.class == CargoTrain
+        result[:cargo] += 1
+      else
+        result[:passanger] += 1
+      end
+    end
+    
+    if result[:passanger] > 0 || result[:cargo] > 0
+      puts "пассажирские - #{result[:passanger]}, грузовые - #{result[:cargo]}"
+    else
+      puts "поездов нет"
+    end
+  end
 end
