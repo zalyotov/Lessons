@@ -15,7 +15,7 @@ class Route
 
   def show
     stations.each do |station|
-      puts station.name
+      puts "#{station.name}"
     end
   end
 end
