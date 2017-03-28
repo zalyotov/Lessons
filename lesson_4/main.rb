@@ -64,7 +64,7 @@ class Main
       when 9
         train_list
       when 0
-        break
+        abort
       else
         puts "Введите число от 0 до 8"
       end
