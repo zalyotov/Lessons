@@ -50,15 +50,13 @@ class Train
   end
 
   def remove_wagon(wagon)
-    if self.speed == 0
-      if self.wagons.count > 0
-        self.wagons.delete(wagon)
-      else
-        return false
-      end
-    else
-      return false
-    end
+    wagons.delete(wagon) if stopped? && wagons.zero > 0
+  end
+
+  protected
+
+  def stopped?
+    speed == 0
   end
 
 end
