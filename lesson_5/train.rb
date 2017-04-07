@@ -1,8 +1,9 @@
 class Train
+  include InstanceCounter
   include CompanyName
   attr_accessor :number, :type, :speed, :wagons
   attr_writer :current_station_id
-  @@trains = []
+  @@trains = {}
 
   class << self
     def find(number)
@@ -15,6 +16,7 @@ class Train
     @wagons = []
     @speed = 0
     @@trains[number] = self
+    register_instance
   end
 
   def add_route(route)
@@ -39,35 +41,27 @@ class Train
   end
 
   def back
-    @current_station_id -= 1
+    @current_station_id -= 1 if @current_station_id > 0
   end
 
   def stop
-    self.speed = 0
+    speed = 0
   end
 
   def go(speed)
-    self.speed = speed
+    speed = speed
   end
 
   def count_wagons
-    self.wagons.count
+    wagons.count
   end 
 
   def add_wagon(wagon)
-    self.wagons << wagon if valid_wagon?(wagon)    
+    wagons << wagon if valid_wagon?(wagon)    
   end
 
   def remove_wagon(wagon)
-    if self.speed == 0
-      if self.wagons.count > 0
-        self.wagons.delete(wagon)
-      else
-        return false
-      end
-    else
-      return false
-    end
+    wagons.delete(wagon) if speed == 0 && wagons.count > 0
   end
 
 end
