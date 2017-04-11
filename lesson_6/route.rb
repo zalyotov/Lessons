@@ -29,7 +29,7 @@ class Route
   private
 
   def validate!
-    raise "Станция не является объектом" unless (stations.first.is_a? Station) || (stations.last.is_a? Station)
+    raise "Станция не является объектом" unless stations.first.is_a?(Station) || stations.last.is_a?(Station)
     true
   end
 end

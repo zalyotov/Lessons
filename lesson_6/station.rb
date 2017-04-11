@@ -14,8 +14,8 @@ class Station
   def initialize(name)
     @name = name
     @trains = []
-    @@stations << self
     validate!
+    @@stations << self
   end
 
   def arrive(train)
