@@ -4,7 +4,7 @@ class PassengerWagon
 
   def initialize(places)
     validate! places
-    @free_places = places.to_i
+    @free_places = places
     @busy_places = 0
   end
 

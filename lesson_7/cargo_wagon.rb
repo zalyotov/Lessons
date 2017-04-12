@@ -4,7 +4,7 @@ class CargoWagon
 
   def initialize(volume)
     validate! volume
-    @free_volume = volume.to_i
+    @free_volume = volume
     @busy_volume = 0
   end
 
@@ -17,7 +17,6 @@ class CargoWagon
   private
 
   def validate!(volume)
-    raise "Введен неверный формат объема в вагоне" unless volume.is_a? Integer
-    true
+    raise "Введен неверный формат объема в вагоне" unless volume.is_a? Float
   end
 end
