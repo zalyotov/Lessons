@@ -15,11 +15,8 @@ module Validation
 
   module InstanceMethods
     def validate!
-      var = self.class.validations
-      var.each do |validation|
-        puts "validation[1]: #{validation[1]}"
-        puts "validation[0]: #{validation[0]} (#{instance_variable_get("@#{validation[0]}")})"
-        puts "validation[2]: #{validation[2]}"
+      validations = self.class.validations
+      validations.each do |validation|
         self.send(validation[1], instance_variable_get("@#{validation[0]}"), validation[2])
       end
     end

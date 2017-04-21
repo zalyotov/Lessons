@@ -9,6 +9,6 @@ class CargoTrain < Train
   validate :number, :format, NUMBER_FORMAT
   
   def valid_wagon?(wagon)
-    wagon.class == CargoWagon
+    wagon.is_a? CargoWagon
   end
 end
